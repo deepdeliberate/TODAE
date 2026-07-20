@@ -1,0 +1,104 @@
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <created>2026-07-20T23:14:31.513947</created>
+    <modified>2026-07-20T23:14:31.513948</modified>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="effect0" name="effect0">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0.0 0.0 0.0 1.0</color>
+            </emission>
+            <ambient>
+              <color>0.0 0.0 0.0 1.0</color>
+            </ambient>
+            <diffuse>
+              <color>1 0.5 0.3 1.0</color>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1.0</color>
+            </specular>
+            <shininess>
+              <float>0.0</float>
+            </shininess>
+            <reflective>
+              <color>0.0 0.0 0.0 1.0</color>
+            </reflective>
+            <reflectivity>
+              <float>0.0</float>
+            </reflectivity>
+            <transparent>
+              <color>0.0 0.0 0.0 1.0</color>
+            </transparent>
+            <transparency>
+              <float>1.0</float>
+            </transparency>
+          </phong>
+        </technique>
+        <extra>
+          <technique profile="GOOGLEEARTH">
+            <double_sided>0</double_sided>
+          </technique>
+        </extra>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="geometry0" name="mycube">
+      <mesh>
+        <source id="cubeverts-array">
+          <float_array count="24" id="cubeverts-array-array">-50 50 50 50 50 50 -50 -50 50 50 -50 50 -50 50 -50 50 50 -50 -50 -50 -50 50 -50 -50</float_array>
+          <technique_common>
+            <accessor count="8" source="#cubeverts-array-array" stride="3">
+              <param type="float" name="X" />
+              <param type="float" name="Y" />
+              <param type="float" name="Z" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="cubenormals-array">
+          <float_array count="18" id="cubenormals-array-array">0 0 1 0 1 0 0 -1 0 -1 0 0 1 0 0 0 0 -1</float_array>
+          <technique_common>
+            <accessor count="6" source="#cubenormals-array-array" stride="3">
+              <param type="float" name="X" />
+              <param type="float" name="Y" />
+              <param type="float" name="Z" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="cubeverts-array-vertices">
+          <input semantic="POSITION" source="#cubeverts-array" />
+        </vertices>
+        <triangles count="12" material="materialref">
+          <input offset="0" semantic="VERTEX" source="#cubeverts-array-vertices" />
+          <input offset="1" semantic="NORMAL" source="#cubenormals-array" />
+          <p>0 0 2 0 3 0 0 0 3 0 1 0 0 1 1 1 5 1 0 1 5 1 4 1 6 2 7 2 3 2 6 2 3 2 2 2 0 3 4 3 6 3 0 3 6 3 2 3 3 4 7 4 5 4 3 4 5 4 1 4 5 5 7 5 6 5 5 5 6 5 4 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_materials>
+    <material id="material0" name="mymaterial">
+      <instance_effect url="#effect0" />
+    </material>
+  </library_materials>
+  <library_visual_scenes>
+    <visual_scene id="myscene">
+      <node id="node0" name="node0">
+        <instance_geometry url="#geometry0">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="materialref" target="#material0" />
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#myscene" />
+  </scene>
+</COLLADA>
